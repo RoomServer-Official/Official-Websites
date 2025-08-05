@@ -1,176 +1,98 @@
-/* ===== 全体設定 ===== */
 body {
-    background-color: #0d1117; /* GitHubのような濃い紺色の背景 */
+    background-color: #000000;
     color: #ffffff;
     font-family: 'Noto Sans JP', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    /* 固定ヘッダー分のスペースを確保 */
-    padding-top: 70px; 
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px; /* コンテンツの最大幅 */
-    padding: 0 20px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-/* ===== ヘッダー ===== */
-header {
-    position: fixed; /* 画面上部に固定 */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    /* ガラスのような半透明の背景 */
-    background-color: rgba(13, 17, 23, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid #30363d;
-    z-index: 1000;
-}
-
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-.logo img {
-    height: 30px; /* ロゴの高さを調整 */
-    vertical-align: middle;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    color: #c9d1d9;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px; /* アイコンとテキストの間隔 */
-}
-
-.nav-links a:hover {
-    color: #ffffff;
-}
-
-.btn-discord {
-    background-color: #161b22;
-    color: #c9d1d9;
-    padding: 8px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid #30363d;
-    transition: all 0.2s ease;
-}
-
-.btn-discord:hover {
-    background-color: #21262d;
-    border-color: #8b949e;
-    color: #ffffff;
-}
-
-/* ===== メインコンテンツ ===== */
-main {
-    width: 100%;
-}
-
-/* ===== 特色セクション ===== */
-.features {
-    padding: 80px 0;
-}
-
-.features .container {
     text-align: center;
 }
 
-.features h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+.container {
+    max-width: 800px;
+    padding: 20px;
 }
 
-.features .subtitle {
-    color: #a0aec0;
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* 見出しのグラデーションテキスト */
+.gradient-text {
+    background: linear-gradient(to right, #22c55e, #3b82f6); /* 緑から青へのグラデーション */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+p {
     font-size: 1.1rem;
-    margin-bottom: 60px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: #cccccc; /* 少し落ち着いた白 */
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.feature-box {
-    background-color: #161b22;
-    padding: 35px;
-    border: 1px solid #30363d;
-    border-radius: 16px;
-    text-align: left;
-    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.feature-box:hover {
-    transform: translateY(-5px) scale(1.03);
-    background-color: #21262d;
-    border-color: #8b949e;
-    cursor: pointer;
-}
-
-.feature-box h3 {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.feature-box p {
-    color: #c9d1d9;
-    line-height: 1.7;
-    font-size: 1rem;
-}
-
-.icon-container {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
+.buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    gap: 20px;
+    flex-wrap: wrap; /* 画面が小さい場合にボタンを折り返す */
 }
 
-.icon-container i {
-    font-size: 24px;
+.btn {
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* アイコンとテキストの間隔 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* 少し浮き上がる効果 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 緑のボタン */
+.btn-primary {
+    background-color: #2ecc71;
     color: #ffffff;
 }
 
-.icon-green { background-color: rgba(34, 197, 94, 0.2); }
-.icon-pink { background-color: rgba(236, 72, 153, 0.2); }
-.icon-blue { background-color: rgba(59, 130, 246, 0.2); }
-.icon-purple { background-color: rgba(139, 92, 246, 0.2); }
+/* Discordボタン */
+.btn-secondary {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-color: #555555;
+}
 
-/* ===== レスポンシブ対応 (スマートフォンなど) ===== */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* 小さい画面ではメニューを非表示 */
-    }
-    .features h2 {
+/* レスポンシブ対応 (スマートフォンなど幅が狭い画面用) */
+@media (max-width: 600px) {
+    h1 {
         font-size: 2.2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%;
+        justify-content: center;
     }
 }
