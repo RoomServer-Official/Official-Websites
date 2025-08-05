@@ -1,169 +1,176 @@
 /* ===== 全体設定 ===== */
 body {
-    background-color: #090c14; /* 背景色を変更 */
+    background-color: #0d1117; /* GitHubのような濃い紺色の背景 */
     color: #ffffff;
     font-family: 'Noto Sans JP', sans-serif;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* 画面全体の高さを使う */
+    /* 固定ヘッダー分のスペースを確保 */
+    padding-top: 70px; 
 }
 
-/* ===== 2カラムレイアウトのコンテナ ===== */
-.main-container {
-    display: flex;
+.container {
     width: 100%;
-    max-width: 1400px; /* 全体の最大幅を調整 */
-    padding: 40px;
-    gap: 60px; /* 左右パネルの間隔 */
+    max-width: 1200px; /* コンテンツの最大幅 */
+    padding: 0 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-.panel {
-    flex: 1; /* パネルが均等に幅を持つように */
+/* ===== ヘッダー ===== */
+header {
+    position: fixed; /* 画面上部に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    /* ガラスのような半透明の背景 */
+    background-color: rgba(13, 17, 23, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #30363d;
+    z-index: 1000;
+}
+
+header nav {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* ===== 左パネル (Hero) ===== */
-.left-panel {
-    text-align: left;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-.hero-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 40px;
-    color: #cccccc;
-}
-
-.gradient-text {
-    background: linear-gradient(to right, #22c55e, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-}
-
-.buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    display: inline-flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: 1px solid transparent;
+    height: 100%;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.logo img {
+    height: 30px; /* ロゴの高さを調整 */
+    vertical-align: middle;
 }
 
-.btn-primary {
-    background-color: #2ecc71;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #c9d1d9;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* アイコンとテキストの間隔 */
+}
+
+.nav-links a:hover {
     color: #ffffff;
 }
 
-.btn-secondary {
-    background-color: transparent;
+.btn-discord {
+    background-color: #161b22;
+    color: #c9d1d9;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #30363d;
+    transition: all 0.2s ease;
+}
+
+.btn-discord:hover {
+    background-color: #21262d;
+    border-color: #8b949e;
     color: #ffffff;
-    border-color: #555555;
-}
-.btn-secondary:hover {
-    background-color: #222; /* ホバー時に少し背景色をつける */
 }
 
+/* ===== メインコンテンツ ===== */
+main {
+    width: 100%;
+}
 
-/* ===== 右パネル (Features) ===== */
-.right-panel {
+/* ===== 特色セクション ===== */
+.features {
+    padding: 80px 0;
+}
+
+.features .container {
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.features .subtitle {
+    color: #a0aec0;
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.feature-box {
+    background-color: #161b22;
+    padding: 35px;
+    border: 1px solid #30363d;
+    border-radius: 16px;
     text-align: left;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.features-content h2 {
-    font-size: 1.8rem;
+.feature-box:hover {
+    transform: translateY(-5px) scale(1.03);
+    background-color: #21262d;
+    border-color: #8b949e;
+    cursor: pointer;
+}
+
+.feature-box h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.features-content .subtitle {
-    color: #a0aec0;
-    font-size: 1rem;
-    margin-bottom: 40px;
-}
-
-.feature-item {
-    margin-bottom: 35px;
-}
-
-.feature-item i {
-    color: #8b949e; /* アイコンの色 */
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-    display: block; /* アイコンをブロック要素にする */
-}
-
-.feature-item h3 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 8px;
-}
-
-.feature-item p {
+.feature-box p {
     color: #c9d1d9;
     line-height: 1.7;
-    margin: 0;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
-
-/* ===== レスポンシブ対応 (画面幅が狭い場合) ===== */
-@media (max-width: 1024px) {
-    body {
-        align-items: flex-start; /* 上から表示 */
-    }
-    .main-container {
-        flex-direction: column; /* 縦並びにする */
-        padding: 20px;
-        gap: 80px; /* 上下セクションの間隔 */
-    }
-    .panel {
-        text-align: center; /* 中央揃えにする */
-    }
-    .buttons {
-        justify-content: center; /* ボタンを中央揃えに */
-    }
-    .feature-item i, .feature-item h3, .feature-item p {
-        text-align: center;
-    }
+.icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 600px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
+.icon-container i {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.icon-green { background-color: rgba(34, 197, 94, 0.2); }
+.icon-pink { background-color: rgba(236, 72, 153, 0.2); }
+.icon-blue { background-color: rgba(59, 130, 246, 0.2); }
+.icon-purple { background-color: rgba(139, 92, 246, 0.2); }
+
+/* ===== レスポンシブ対応 (スマートフォンなど) ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* 小さい画面ではメニューを非表示 */
     }
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn {
-        width: 80%;
-        justify-content: center;
+    .features h2 {
+        font-size: 2.2rem;
     }
 }
