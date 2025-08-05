@@ -36,16 +36,19 @@ body {
     height: 100%;
 }
 
-/* ===== 新しいテキストロゴのスタイル ===== */
 .logo {
     color: #ffffff;
-    text-decoration: none; /* リンクの下線を削除 */
-    font-size: 1.5rem;   /* フォントサイズを大きく (24px相当) */
-    font-weight: 700;    /* 太字にする */
-    letter-spacing: 0.5px; /* 文字間隔を少し広げる */
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-/* 古い画像ロゴのスタイルは削除しました */
+/* PC用ナビゲーション */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
 
 .nav-links {
     list-style: none;
@@ -64,7 +67,6 @@ body {
     align-items: center;
     gap: 6px;
 }
-
 .nav-links a:hover {
     color: #ffffff;
 }
@@ -83,33 +85,79 @@ body {
     border: 1px solid #30363d;
     transition: all 0.2s ease;
 }
-
 .btn-discord:hover {
     background-color: #21262d;
     border-color: #8b949e;
     color: #ffffff;
 }
 
+/* ===== スマホ用メニュー関連 ===== */
 .mobile-menu-button {
-    display: none;
+    display: none; /* PCでは非表示 */
     background: none;
     border: none;
     color: #c9d1d9;
     font-size: 24px;
     cursor: pointer;
+    z-index: 1200;
 }
 
-/* ===== メインコンテンツ ===== */
-main {
-    width: 100%;
+.mobile-nav-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #161b22;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.25);
+    padding: 60px 20px 20px 20px;
+    box-sizing: border-box;
+    /* 初期状態では画面の外に配置 */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1100;
+}
+
+.mobile-nav-panel.active {
+    /* activeクラスが付くと画面内にスライドイン */
+    transform: translateX(0);
+}
+
+.close-menu-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.mobile-nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 18px 10px;
+    border-bottom: 1px solid #30363d;
 }
 
 /* ===== レスポンシブ対応 ===== */
 @media (max-width: 992px) {
-    .nav-links {
-        display: none;
+    .desktop-nav {
+        display: none; /* PC用メニューを非表示 */
     }
     .mobile-menu-button {
-        display: block;
+        display: block; /* スマホ用ハンバーガーボタンを表示 */
     }
 }
