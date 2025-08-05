@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoomServer - マインクラフトサーバー</title>
+    <title>マインクラフトの世界で冒険を始めよう</title>
     <link rel="stylesheet" href="style.css">
     <!-- アイコン表示のためのFont Awesome読み込み -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -13,72 +13,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- ===== ヘッダー（ナビゲーションバー） ===== -->
-    <header class="main-header">
-        <nav class="container">
-            <a href="index.html" class="logo">RoomServer</a>
-
-            <!-- PC用ナビゲーション -->
-            <div class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="#">参加方法</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> サーバー監視</a></li>
-                    <li><a href="https://docs.roomserver.blog" target="_blank" rel="noopener noreferrer">ドキュメント <i class="fas fa-external-link-alt"></i></a></li>
-                </ul>
-                <a href="https://discord.roomserver.blog" class="btn-discord" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-discord"></i> Discord参加
-                </a>
-            </div>
-
-            <!-- スマホ用ハンバーガーボタン -->
-            <button class="mobile-menu-button" aria-label="メニューを開く">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
-
-    <!-- ===== スマホ用スライドメニュー（普段は非表示） ===== -->
-    <div class="mobile-nav-panel">
-        <button class="close-menu-button" aria-label="メニューを閉じる">×</button>
-        <ul class="mobile-nav-links">
-            <li><a href="#">参加方法</a></li>
-            <li><a href="#"><i class="fas fa-chart-line"></i> サーバー監視</a></li>
-            <li><a href="https://docs.roomserver.blog" target="_blank" rel="noopener noreferrer">ドキュメント</a></li>
-            <li><a href="https://discord.roomserver.blog" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discord参加</a></li>
-        </ul>
+    <div class="container">
+        <h1>マインクラフトの世界で<br><span class="gradient-text">冒険を始めよう</span></h1>
+        <p>
+            RoomServerは、快適でフレンドリーな<br>
+            マインクラフト参加型サーバーです。<br>
+            しっかりとしたルールとドキュメントで安心してプレイできます。
+        </p>
+        <div class="buttons">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-gamepad"></i> 今すぐ参加する
+            </a>
+            <a href="https://discord.roomserver.blog" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-discord"></i> Discordに参加
+            </a>
+        </div>
     </div>
-
-
-    <main>
-        <!-- ここにページのコンテンツが入ります -->
-    </main>
-
-    <!-- ===== JavaScript ===== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.querySelector('.mobile-menu-button');
-            const closeMenuButton = document.querySelector('.close-menu-button');
-            const mobileNavPanel = document.querySelector('.mobile-nav-panel');
-            const body = document.body;
-
-            // 開くボタンの動作
-            if (mobileMenuButton && mobileNavPanel) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mobileNavPanel.classList.add('active');
-                    body.style.overflow = 'hidden'; // 背景のスクロールを禁止
-                });
-            }
-
-            // 閉じるボタンの動作
-            if (closeMenuButton && mobileNavPanel) {
-                closeMenuButton.addEventListener('click', function() {
-                    mobileNavPanel.classList.remove('active');
-                    body.style.overflow = ''; // 背景のスクロール禁止を解除
-                });
-            }
-        });
-    </script>
-
 </body>
 </html>
