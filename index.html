@@ -17,23 +17,68 @@
     <!-- ===== ヘッダー（ナビゲーションバー） ===== -->
     <header class="main-header">
         <nav class="container">
-            <!-- ロゴをテキストに変更し、リンク先を指定しました -->
             <a href="index.html" class="logo">RoomServer</a>
 
-            <ul class="nav-links">
-                <li><a href="#">参加方法</a></li>
-                <li><a href="https://docs.roomserver.blog" target="_blank" rel="noopener noreferrer">ドキュメント <i class="fas fa-external-link-alt"></i></a></li>
-            </ul>
-            <a href="https://discord.roomserver.blog" class="btn-discord" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-discord"></i> Discord参加
-            </a>
-            <button class="mobile-menu-button" aria-label="メニューを開く"><i class="fas fa-bars"></i></button>
+            <!-- PC用ナビゲーション -->
+            <div class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="#">参加方法</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> サーバー監視</a></li>
+                    <li><a href="https://docs.roomserver.blog" target="_blank" rel="noopener noreferrer">ドキュメント <i class="fas fa-external-link-alt"></i></a></li>
+                </ul>
+                <a href="https://discord.roomserver.blog" class="btn-discord" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-discord"></i> Discord参加
+                </a>
+            </div>
+
+            <!-- スマホ用ハンバーガーボタン -->
+            <button class="mobile-menu-button" aria-label="メニューを開く">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
+    <!-- ===== スマホ用スライドメニュー（普段は非表示） ===== -->
+    <div class="mobile-nav-panel">
+        <button class="close-menu-button" aria-label="メニューを閉じる">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#">参加方法</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> サーバー監視</a></li>
+            <li><a href="https://docs.roomserver.blog" target="_blank" rel="noopener noreferrer">ドキュメント</a></li>
+            <li><a href="https://discord.roomserver.blog" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discord参加</a></li>
+        </ul>
+    </div>
+
+
     <main>
-        <!-- ここにコンテンツを追加できます -->
+        <!-- ここにページのコンテンツが入ります -->
     </main>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const closeMenuButton = document.querySelector('.close-menu-button');
+            const mobileNavPanel = document.querySelector('.mobile-nav-panel');
+            const body = document.body;
+
+            // 開くボタンの動作
+            if (mobileMenuButton && mobileNavPanel) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNavPanel.classList.add('active');
+                    body.style.overflow = 'hidden'; // 背景のスクロールを禁止
+                });
+            }
+
+            // 閉じるボタンの動作
+            if (closeMenuButton && mobileNavPanel) {
+                closeMenuButton.addEventListener('click', function() {
+                    mobileNavPanel.classList.remove('active');
+                    body.style.overflow = ''; // 背景のスクロール禁止を解除
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
