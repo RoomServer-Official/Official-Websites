@@ -68,7 +68,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(to right, #fdff83, #179e34);
+            background: linear-gradient(to right, #22c55e, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -224,6 +224,21 @@
             color: #ffffff;
             cursor: default;
         }
+        
+        /* ===== フッター (ここから追加) ===== */
+        .main-footer {
+            background-color: #1a1a1a;
+            color: #a8a8a8;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .copylight {
+            color: #a8a8a8;
+            text-decoration: none;
+        }
 
 
         /* ===== レスポンシブ対応 ===== */
@@ -271,16 +286,19 @@
                     <i class="fas fa-bolt"></i>
                     <h3>快適</h3>
                     <p>高性能サーバーで安定したプレイ環境を提供。ラグが少なく、快適にマインクラフトを楽しめます。</p>
+                    <a href="#" class="card-link">詳しく見る &gt;</a>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-users"></i>
                     <h3>フレンドリー</h3>
                     <p>温かいコミュニティで初心者から上級者まで歓迎。親しみやすい雰囲気でプレイヤー同士の交流を大切にしています。</p>
+                    <a href="#" class="card-link">詳しく見る &gt;</a>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-book"></i>
                     <h3>ルールとドキュメント</h3>
                     <p>詳細なガイドやルール、FAQ等を完備。初心者でも安心してサーバーを利用できるよう情報を整理しています。</p>
+                    <a href="#" class="card-link">詳しく見る &gt;</a>
                 </div>
             </div>
         </div>
@@ -316,9 +334,15 @@
             </div>
         </div>
     </section>
+    
+    <!-- ===== フッター (ここから追加) ===== -->
+    <footer class="main-footer">
+        <p>&copy; 2024 - <span id="current-year"></span> <a href="https://roomserver.blog" target="_blank" class="copylight">RoomServer</a></p>
+    </footer>
 
     <!-- ===== JavaScript ===== -->
     <script>
+        // コピーボタンの機能
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', () => {
                 const targetId = button.getAttribute('data-copy-target');
@@ -338,7 +362,10 @@
                 });
             });
         });
+
+        // フッターの年を自動更新する機能 (ここから追加)
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 
 </body>
-</html>
+</html> 
