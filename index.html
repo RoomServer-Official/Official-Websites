@@ -44,25 +44,75 @@
                     <i class="fas fa-bolt"></i>
                     <h3>快適</h3>
                     <p>高性能サーバーで安定したプレイ環境を提供。ラグが少なく、快適にマインクラフトを楽しめます。</p>
-                    <a href="#" class="card-link">詳しく見る &gt;</a>
                 </div>
                 <!-- カード 2: フレンドリー -->
                 <div class="feature-card">
                     <i class="fas fa-users"></i>
                     <h3>フレンドリー</h3>
                     <p>温かいコミュニティで初心者から上級者まで歓迎。親しみやすい雰囲気でプレイヤー同士の交流を大切にしています。</p>
-                    <a href="#" class="card-link">詳しく見る &gt;</a>
                 </div>
                 <!-- カード 3: ルールとドキュメント -->
                 <div class="feature-card">
                     <i class="fas fa-book"></i>
                     <h3>ルールとドキュメント</h3>
                     <p>詳細なガイドやルール、FAQ等を完備。初心者でも安心してサーバーを利用できるよう情報を整理しています。</p>
-                    <a href="#" class="card-link">詳しく見る &gt;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== 参加セクション (ここから追加) ===== -->
+    <section class="join-section">
+        <div class="join-container">
+            <h2>サーバーに参加する</h2>
+            <div class="join-grid">
+                <!-- JAVA版カード -->
+                <div class="join-card">
+                    <h3>JAVA版</h3>
+                    <p class="version-info">ver: 1.21.5</p>
+                    <div class="copy-field">
+                        <span id="java-address">play.roomserver.blog</span>
+                        <button class="copy-btn" data-copy-target="java-address">
+                            <i class="fas fa-copy"></i> コピー
+                        </button>
+                    </div>
+                </div>
+                <!-- 統合版カード -->
+                <div class="join-card">
+                    <h3>統合版</h3>
+                    <p class="version-info">(Xboxフレンド申請)</p>
+                    <div class="copy-field">
+                        <span id="bedrock-address">mcssmcss3751</span>
+                        <button class="copy-btn" data-copy-target="bedrock-address">
+                            <i class="fas fa-copy"></i> コピー
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== JavaScript (ここから追加) ===== -->
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-copy-target');
+                const textToCopy = document.getElementById(targetId).innerText;
+
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalText = button.innerHTML;
+                    button.innerHTML = 'コピーしました!';
+                    button.disabled = true;
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 2000); // 2秒後に元に戻す
+                }).catch(err => {
+                    console.error('コピーに失敗しました', err);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
