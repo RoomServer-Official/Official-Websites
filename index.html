@@ -10,66 +10,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* ===== 全体設定 ===== */
-        body { background-color: #000; color: #fff; font-family: 'Noto Sans JP', sans-serif; margin: 0; padding-top: 70px; /* 固定ヘッダー分のスペースを確保 */ }
+        body { background-color: #000; color: #fff; font-family: 'Noto Sans JP', sans-serif; margin: 0; padding-top: 70px; }
         .container { max-width: 800px; padding: 20px; margin: 0 auto; }
 
-        /* ===== 共通ヘッダー (ここを修正) ===== */
-        .main-header { 
-            position: fixed; /* 画面上部に固定 */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            z-index: 1000; /* 他の要素より手前に表示 */
-            background-color: rgba(22, 27, 34, 0.8); /* 半透明の背景 */
-            backdrop-filter: blur(10px); /* 背景のぼかし効果 */
-            -webkit-backdrop-filter: blur(10px); /* Safari対応 */
-            border-bottom: 1px solid #30363d; 
-            padding: 0 20px; 
-            box-sizing: border-box; /* paddingを含めた幅計算に */
-        }
+        /* ===== 共通ヘッダー ===== */
+        .main-header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; z-index: 1000; background-color: rgba(22, 27, 34, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid #30363d; padding: 0 20px; box-sizing: border-box; }
         .main-header nav { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 100%; }
         .logo { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
         .nav-links { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
         .nav-links a { color: #c9d1d9; text-decoration: none; transition: color .2s ease; }
         .nav-links a:hover { color: #fff; }
         .btn-top-page { background-color: #f0f6fc; color: #161b22 !important; padding: 8px 16px; border-radius: 6px; font-weight: 500; }
-        .hero-section{position:relative;display:flex;justify-content:center;align-items:center;min-height:90vh;text-align:center;padding:40px 0;background-image:url('https://cdn.discordapp.com/attachments/1323462474397122663/1404506769836736673/2025-08-12_01.18.13.png?ex=689b705c&is=689a1edc&hm=d22adedae922592895d35f5d29eb964f09b82813af6153bba20170c1be9079b5&');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed}
-        .hero-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.6);z-index:1}
-        .hero-section .container{position:relative;z-index:2}
-        .hero-section h1{font-size:3rem;font-weight:700;margin-bottom:20px;line-height:1.4}
-        .gradient-text{background:linear-gradient(to right,#22c55e,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent}
-        .hero-section p{font-size:1.1rem;line-height:1.8;margin-bottom:40px;color:#ccc}
-        .buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-        .btn{padding:15px 30px;text-decoration:none;border-radius:8px;font-size:1rem;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:transform .2s ease,box-shadow .2s ease;border:1px solid transparent}
-        .btn:hover{transform:translateY(-3px);box-shadow:0 4px 15px rgba(0,0,0,.2)}
-        .btn-primary{background-color:#2ecc71;color:#fff}
-        .btn-secondary{background-color:#1a1a1a;color:#fff;border-color:#555}
-        .features-section{background-color:#1a1a1a;padding:80px 20px}
-        .features-container{max-width:1100px;margin:0 auto}
-        .features-container h2{color:#fff;font-size:2.5rem;text-align:center;margin-top:0;margin-bottom:50px}
-        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-        .feature-card{background-color:#2a2a2a;padding:40px;border-radius:16px;text-align:left;color:#fff;display:flex;flex-direction:column;box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s ease,background-color .3s ease,box-shadow .3s ease}
-        .feature-card:hover{transform:scale(1.05) translateY(-10px);background-color:#383838;box-shadow:0 16px 30px rgba(0,0,0,.7);cursor:pointer}
-        .feature-card i{font-size:2rem;color:#a8a8a8;margin-bottom:20px}
-        .feature-card h3{font-size:1.5rem;margin:0 0 10px 0;color:#fff}
-        .feature-card p{color:#a8a8a8;line-height:1.6;margin:0 0 25px 0;flex-grow:1}
-        .card-link{color:#61dafb;text-decoration:none;font-weight:700;font-size:1.05rem}
-        .join-section{background-color:#000;padding:80px 20px;border-top:1px solid #2a2a2a}
-        .join-container{max-width:1100px;margin:0 auto}
-        .join-container h2{color:#fff;font-size:2.5rem;text-align:center;margin-top:0;margin-bottom:50px}
-        .join-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
-        .join-card{background-color:#2a2a2a;padding:40px;border-radius:16px;text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.5)}
-        .join-card h3{font-size:1.8rem;margin:0 0 5px 0;color:#fff}
-        .join-card .version-info{color:#a8a8a8;margin-bottom:30px;font-size:1rem}
-        .copy-field{background-color:#1a1a1a;border:1px solid #444;border-radius:8px;padding:10px 15px;display:flex;justify-content:space-between;align-items:center;font-family:'Courier New',Courier,monospace;font-size:1.1rem}
-        .copy-field span{color:#e0e0e0}
-        .copy-btn{background-color:#383838;color:#fff;border:1px solid #555;border-radius:6px;padding:8px 12px;cursor:pointer;transition:background-color .2s ease;display:flex;align-items:center;gap:8px}
-        .copy-btn:hover{background-color:#4a4a4a}
-        .copy-btn:disabled{background-color:#2ecc71;color:#fff;cursor:default}
-        .main-footer{background-color:#1a1a1a;color:#a8a8a8;padding:30px 20px;text-align:center;font-size:.9rem;border-top:1px solid #2a2a2a}
-        @media (max-width:992px){.features-grid,.join-grid{grid-template-columns:1fr}}
-        @media (max-width:600px){.hero-section h1{font-size:2.2rem}.hero-section p{font-size:1rem}.buttons{flex-direction:column;align-items:center}.btn{width:80%;justify-content:center}}
+
+        /* ===== ヒーローセクション ===== */
+        .hero-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            text-align: center;
+            padding: 40px 0;
+            
+            /* 画像の参照先をプロジェクト内のファイルに変更 */
+            background-image: url('/img/index_background.png'); 
+            
+            /* 画像サイズを自動調整するための設定 */
+            background-size: cover; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, .6); z-index: 1; }
+        .hero-section .container { position: relative; z-index: 2; }
+        .hero-section h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; line-height: 1.4; }
+        .gradient-text { background: linear-gradient(to right, #22c55e, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .hero-section p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px; color: #ccc; }
+        .buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn { padding: 15px 30px; text-decoration: none; border-radius: 8px; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: transform .2s ease, box-shadow .2s ease; border: 1px solid transparent; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, .2); }
+        .btn-primary { background-color: #2ecc71; color: #fff; }
+        .btn-secondary { background-color: #1a1a1a; color: #fff; border-color: #555; }
+        
+        /* ===== 特色セクション ===== */
+        .features-section { background-color: #1a1a1a; padding: 80px 20px; }
+        .features-container { max-width: 1100px; margin: 0 auto; }
+        .features-container h2 { color: #fff; font-size: 2.5rem; text-align: center; margin-top: 0; margin-bottom: 50px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .feature-card { background-color: #2a2a2a; padding: 40px; border-radius: 16px; text-align: left; color: #fff; display: flex; flex-direction: column; box-shadow: 0 8px 20px rgba(0,0,0,.5); transition: transform .3s ease, background-color .3s ease, box-shadow .3s ease; }
+        .feature-card:hover { transform: scale(1.05) translateY(-10px); background-color: #383838; box-shadow: 0 16px 30px rgba(0,0,0,.7); cursor: pointer; }
+        .feature-card i { font-size: 2rem; color: #a8a8a8; margin-bottom: 20px; }
+        .feature-card h3 { font-size: 1.5rem; margin: 0 0 10px 0; color: #fff; }
+        .feature-card p { color: #a8a8a8; line-height: 1.6; margin: 0 0 25px 0; flex-grow: 1; }
+        .card-link { color: #61dafb; text-decoration: none; font-weight: 700; font-size: 1.05rem; }
+        
+        /* ===== 参加セクション ===== */
+        .join-section { background-color: #000; padding: 80px 20px; border-top: 1px solid #2a2a2a; }
+        .join-container { max-width: 1100px; margin: 0 auto; }
+        .join-container h2 { color: #fff; font-size: 2.5rem; text-align: center; margin-top: 0; margin-bottom: 50px; }
+        .join-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .join-card { background-color: #2a2a2a; padding: 40px; border-radius: 16px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,.5); }
+        .join-card h3 { font-size: 1.8rem; margin: 0 0 5px 0; color: #fff; }
+        .join-card .version-info { color: #a8a8a8; margin-bottom: 30px; font-size: 1rem; }
+        .copy-field { background-color: #1a1a1a; border: 1px solid #444; border-radius: 8px; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; }
+        .copy-field span { color: #e0e0e0; }
+        .copy-btn { background-color: #383838; color: #fff; border: 1px solid #555; border-radius: 6px; padding: 8px 12px; cursor: pointer; transition: background-color .2s ease; display: flex; align-items: center; gap: 8px; }
+        .copy-btn:hover { background-color: #4a4a4a; }
+        .copy-btn:disabled { background-color: #2ecc71; color: #fff; cursor: default; }
+        
+        /* ===== フッター ===== */
+        .main-footer { background-color: #1a1a1a; color: #a8a8a8; padding: 30px 20px; text-align: center; font-size: .9rem; border-top: 1px solid #2a2a2a; }
+        
+        /* ===== レスポンシブ ===== */
+        @media (max-width: 992px) { .features-grid, .join-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .hero-section h1 { font-size: 2.2rem; } .hero-section p { font-size: 1rem; } .buttons { flex-direction: column; align-items: center; } .btn { width: 80%; justify-content: center; } }
     </style>
 </head>
 <body>
@@ -79,11 +93,10 @@
             <ul class="nav-links">
                 <li><a href="policy.html">プライバシーポリシー</a></li>
                 <li><a href="tos.html">利用規約</a></li>
-                <li><a href="index.html" class="btn-top-page">トップページ</a></li>
+                <li><a href="https://dicsord.roomserver.blog" target="_blank" class="btn-top-page">Discordに参加する</a></li>
             </ul>
         </nav>
     </header>
-    <!-- ===== ヒーローセクション ===== -->
     <section class="hero-section">
         <div class="container">
             <h1>マインクラフトの世界で<br><span class="gradient-text">冒険を始めよう</span></h1>
@@ -93,68 +106,48 @@
                 しっかりとしたルールとドキュメントで安心してプレイできます。
             </p>
             <div class="buttons">
-                <a href="#" class="btn btn-primary">
-                    <i class="fas fa-gamepad"></i> 今すぐ参加する
-                </a>
-                <a href="https://discord.roomserver.blog" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-discord"></i> Discordに参加
-                </a>
+                <a href="#" class="btn btn-primary"><i class="fas fa-gamepad"></i> 今すぐ参加する</a>
+                <a href="https://discord.roomserver.blog" class="btn btn-secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discordに参加</a>
             </div>
         </div>
     </section>
-
-    <!-- ===== 特色セクション ===== -->
     <section class="features-section">
         <div class="features-container">
             <h2>RoomServerの特徴</h2>
             <div class="features-grid">
-                <!-- カード 1: 快適 -->
                 <div class="feature-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>快適</h3>
+                    <i class="fas fa-bolt"></i><h3>快適</h3>
                     <p>高性能サーバーで安定したプレイ環境を提供。ラグが少なく、快適にマインクラフトを楽しめます。</p>
                 </div>
-                <!-- カード 2: フレンドリー -->
                 <div class="feature-card">
-                    <i class="fas fa-users"></i>
-                    <h3>フレンドリー</h3>
+                    <i class="fas fa-users"></i><h3>フレンドリー</h3>
                     <p>温かいコミュニティで初心者から上級者まで歓迎。親しみやすい雰囲気でプレイヤー同士の交流を大切にしています。</p>
                 </div>
-                <!-- カード 3: ルールとドキュメント -->
                 <div class="feature-card">
-                    <i class="fas fa-book"></i>
-                    <h3>ルールとドキュメント</h3>
+                    <i class="fas fa-book"></i><h3>ルールとドキュメント</h3>
                     <p>詳細なガイドやルール、FAQ等を完備。初心者でも安心してサーバーを利用できるよう情報を整理しています。</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ===== 参加セクション (ここから追加) ===== -->
     <section class="join-section">
         <div class="join-container">
             <h2>サーバーに参加する</h2>
             <div class="join-grid">
-                <!-- JAVA版カード -->
                 <div class="join-card">
                     <h3>JAVA版</h3>
                     <p class="version-info">ver: 1.21.5</p>
                     <div class="copy-field">
                         <span id="java-address">play.roomserver.blog</span>
-                        <button class="copy-btn" data-copy-target="java-address">
-                            <i class="fas fa-copy"></i> コピー
-                        </button>
+                        <button class="copy-btn" data-copy-target="java-address"><i class="fas fa-copy"></i> コピー</button>
                     </div>
                 </div>
-                <!-- 統合版カード -->
                 <div class="join-card">
                     <h3>統合版</h3>
                     <p class="version-info">(Xboxフレンド申請)</p>
                     <div class="copy-field">
                         <span id="bedrock-address">mcssmcss3751</span>
-                        <button class="copy-btn" data-copy-target="bedrock-address">
-                            <i class="fas fa-copy"></i> コピー
-                        </button>
+                        <button class="copy-btn" data-copy-target="bedrock-address"><i class="fas fa-copy"></i> コピー</button>
                     </div>
                 </div>
             </div>
@@ -162,7 +155,7 @@
     </section>
     <footer class="main-footer"><p>&copy; 2024 - <span id="current-year"></span> KakkaGroup</p></footer>
     <script>
-        document.querySelectorAll('.copy-btn').forEach(button=>{button.addEventListener('click',()=>{const targetId=button.getAttribute('data-copy-target');const textToCopy=document.getElementById(targetId).innerText;navigator.clipboard.writeText(textToCopy).then(()=>{const originalText=button.innerHTML;button.innerHTML='コピーしました!';button.disabled=true;setTimeout(()=>{button.innerHTML=originalText;button.disabled=false},2000)}).catch(err=>{console.error('コピーに失敗しました',err)})})});
+        document.querySelectorAll('.copy-btn').forEach(button => { button.addEventListener('click', () => { const targetId = button.getAttribute('data-copy-target'); const textToCopy = document.getElementById(targetId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = button.innerHTML; button.innerHTML = 'コピーしました!'; button.disabled = true; setTimeout(() => { button.innerHTML = originalText; button.disabled = false; }, 2000); }).catch(err => { console.error('コピーに失敗しました', err); }); }); });
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
