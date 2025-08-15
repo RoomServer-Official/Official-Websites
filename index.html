@@ -22,6 +22,8 @@
         .nav-links a { color: #c9d1d9; text-decoration: none; transition: color .2s ease; }
         .nav-links a:hover { color: #fff; }
         .btn-top-page { background-color: #f0f6fc; color: #161b22 !important; padding: 8px 16px; border-radius: 6px; font-weight: 500; }
+        .btn-discord { display: inline-flex; align-items: center; gap: 8px; background-color: transparent; color: #c9d1d9; border: 1px solid #555; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: all 0.2s ease; }
+        .btn-discord:hover { background-color: #383838; border-color: #8b949e; color: #ffffff; }
 
         /* ===== スマホ用メニュー ===== */
         .mobile-menu-button { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
@@ -33,28 +35,24 @@
         .mobile-nav-links { list-style: none; padding: 0; margin-top: 60px; }
         .mobile-nav-links a { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-size: 1.2rem; padding: 18px 10px; border-bottom: 1px solid #30363d; }
         
-        /* ===== Discordボタンのスタイル (追加) ===== */
-.btn-discord {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: transparent;
-    color: #c9d1d9;
-    border: 1px solid #555;
-    padding: 8px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
+        /* ===== ヒーローセクション (ここを修正) ===== */
+        .hero-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            text-align: center;
+            padding: 40px 0;
+            background-image: url('/img/index_background.png'); 
+            
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
 
-.btn-discord:hover {
-    background-color: #383838;
-    border-color: #8b949e;
-    color: #ffffff;
-}
-        /* ... ヒーローセクション以降のスタイル ... */
-        .hero-section { position: relative; display: flex; justify-content: center; align-items: center; min-height: 90vh; text-align: center; padding: 40px 0; background-image: url('background.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; }
+            /* PC版のデフォルト表示位置 (中央) */
+            background-position: center center;
+        }
         .hero-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, .6); z-index: 1; }
         .hero-section .container { position: relative; z-index: 2; }
         .hero-section h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; line-height: 1.4; }
@@ -65,6 +63,8 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, .2); }
         .btn-primary { background-color: #2ecc71; color: #fff; }
         .btn-secondary { background-color: #1a1a1a; color: #fff; border-color: #555; }
+        
+        /* ...以降のCSSは変更なし... */
         .features-section { background-color: #1a1a1a; padding: 80px 20px; }
         .features-container { max-width: 1100px; margin: 0 auto; }
         .features-container h2 { color: #fff; font-size: 2.5rem; text-align: center; margin-top: 0; margin-bottom: 50px; }
@@ -95,6 +95,12 @@
             .mobile-menu-button { display: block; }
             .features-grid, .join-grid { grid-template-columns: 1fr; }
         }
+        @media (max-width: 768px) {
+            /* ↓↓↓ スマホ用の背景位置を指定 (追加) ↓↓↓ */
+            .hero-section {
+                background-position: center bottom;
+            }
+        }
         @media (max-width: 600px) {
             .hero-section h1 { font-size: 2.2rem; }
             .hero-section p { font-size: 1rem; }
@@ -113,8 +119,9 @@
                     <li><a href="tos.html">利用規約</a></li>
                 </ul>
                 <a href="https://discord.roomserver.blog" class="btn-discord" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-discord"></i> Discordに参加
+                    <i class="fab fa-discord"></i> Discordに参加
                 </a>
+                <a href="index.html" class="btn-top-page">トップページ</a>
             </div>
             <button class="mobile-menu-button" aria-label="メニューを開く"><i class="fas fa-bars"></i></button>
         </nav>
@@ -130,6 +137,7 @@
             <li><a href="https://discord.roomserver.blog" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discordに参加</a></li>
         </ul>
     </div>
+
     <main>
     <section class="hero-section">
         <div class="container">
@@ -197,23 +205,12 @@
             const overlay = document.querySelector('.mobile-nav-overlay');
             const panel = document.querySelector('.mobile-nav-panel');
             const body = document.body;
-
-            const openMenu = () => {
-                panel.classList.add('active');
-                overlay.classList.add('active');
-                body.style.overflow = 'hidden';
-            };
-            const closeMenu = () => {
-                panel.classList.remove('active');
-                overlay.classList.remove('active');
-                body.style.overflow = '';
-            };
-
+            const openMenu = () => { panel.classList.add('active'); overlay.classList.add('active'); body.style.overflow = 'hidden'; };
+            const closeMenu = () => { panel.classList.remove('active'); overlay.classList.remove('active'); body.style.overflow = ''; };
             mobileMenuButton.addEventListener('click', openMenu);
             closeMenuButton.addEventListener('click', closeMenu);
             overlay.addEventListener('click', closeMenu);
-
-            document.querySelectorAll('.copy-btn').forEach(button => { /* ...コピー機能... */ });
+            document.querySelectorAll('.copy-btn').forEach(button => { button.addEventListener('click', () => { const targetId = button.getAttribute('data-copy-target'); const textToCopy = document.getElementById(targetId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = button.innerHTML; button.innerHTML = 'コピーしました!'; button.disabled = true; setTimeout(() => { button.innerHTML = originalText; button.disabled = false; }, 2000); }).catch(err => { console.error('コピーに失敗しました', err); }); }); });
             document.getElementById('current-year').textContent = new Date().getFullYear();
         });
     </script>
